@@ -14,7 +14,7 @@
 #include <tuple>
 #include <type_traits>
 
-#include "xtensor/xutils.hpp"
+#include "xtensor/utils/xutils.hpp"
 
 #include "xflens/cxxblas/typedefs.h"
 #include "xtensor-blas/xblas_config.hpp"
@@ -30,8 +30,8 @@
 namespace xt
 {
     template <layout_type L = layout_type::row_major, class T>
-    inline auto view_eval(T&& t
-    ) -> std::enable_if_t<has_data_interface<std::decay_t<T>>::value && std::decay_t<T>::static_layout == L, T&&>
+    inline auto view_eval(T&& t)
+        -> std::enable_if_t<has_data_interface<std::decay_t<T>>::value && std::decay_t<T>::static_layout == L, T&&>
     {
         return std::forward<T>(t);
     }
